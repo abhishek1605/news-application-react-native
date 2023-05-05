@@ -4,7 +4,7 @@ import { extendTheme, Theme } from "native-base";
 export const lightTheme: Theme = extendTheme({
   colors: {
     primary: {
-      50: "#DCEEF3",
+      backgroundColor: "#DCEEF3",
       100: "#C2E2EA",
       200: "#A7D5E1",
       300: "#8DC8D8",
