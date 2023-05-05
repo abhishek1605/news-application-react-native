@@ -1,24 +1,35 @@
-import { StyleSheet, ViewStyle } from "react-native";
+import { StyleSheet } from "react-native";
 
-type SwipeStripStyle = ViewStyle & {
+type SwipeStripStyle = {
   width: string;
   height: number;
-  backgroundColor: string;
   bottom: number;
   left: number;
 };
 
-type InitialScreenStyle = {
-  swipeStrip: SwipeStripStyle;
+type ContainerStyle = {
+  alignItems: string;
+  marginBottom: string;
+  marginTop: string;
 };
 
-const styles = StyleSheet.create<InitialScreenStyle>({
+type InitialScreenStyle = {
+  swipeStrip: SwipeStripStyle;
+  container: ContainerStyle;
+};
+
+const styles: InitialScreenStyle = StyleSheet.create({
   swipeStrip: {
     position: "absolute",
     width: "100%",
     height: 100,
     bottom: 0,
     left: 0,
+  },
+  container: {
+    alignItems: "center",
+    marginTop: "auto",
+    marginBottom: "auto",
   },
 });
 

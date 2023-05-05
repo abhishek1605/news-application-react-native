@@ -1,6 +1,8 @@
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import { EasingFunction, useWindowDimensions } from "react-native";
-import React, { useEffect, useState } from "react";
-import { Box } from "native-base";
+
+import AppContext from "../../Context/AppContext";
+import { Box, Center, Image, PresenceTransition } from "native-base";
 import { PanGestureHandler } from "react-native-gesture-handler";
 import Animated, {
   useAnimatedGestureHandler,
@@ -15,7 +17,12 @@ import { NavigationProps } from "../../types/appTypes";
 import { setClientHeight } from "../../utils/commonUtils";
 
 import styles from "./InitialScreen.style";
-import AppContext from "../../Context/AppContext";
+import InitialScreenHeading from "./InitialScreenHeading";
+import InitialScreenButtons from "./InitialScreenButtons";
+import SwipeUpTransition from "../common/SwipeUpTransition";
+
+const initialScreenLangImg = require("../../../assets/initial-screen-lang-icon.png");
+const initialScreenLangImgDarkMode = require("../../../assets/initial-screen-lang-icon-darkmode.png");
 
 type dimensionTypes = {
   duration: number;
@@ -27,6 +34,8 @@ const easeInOpt: dimensionTypes = {
 };
 
 const InitialScreen = ({ navigation }: NavigationProps) => {
+  const { state, dispatch } = useContext(AppContext);
+  const { language, theme } = state || {};
   const y = useSharedValue(0);
   const [navigateScreen, setNavigateScreen] = useState<boolean>(false);
   const { height } = useWindowDimensions();
@@ -71,9 +80,28 @@ const InitialScreen = ({ navigation }: NavigationProps) => {
       <Animated.View
         style={[{ height: setClientHeight() }, animatedContainerStyle]}
       >
-        <PanGestureHandler onGestureEvent={swipeScreenGestureHandler}>
-          <Animated.View style={styles.swipeStrip} />
-        </PanGestureHandler>
+        <Box {...styles.container} backgroundColor="primary.backgroundColor">
+          <Center>
+            <Image
+              size={150}
+              source={
+                theme === "light"
+                  ? initialScreenLangImg
+                  : initialScreenLangImgDarkMode
+              }
+              alt="Alternate Text"
+            />
+            <InitialScreenHeading />
+            <InitialScreenButtons />
+          </Center>
+        </Box>
+        {language && (
+          <PanGestureHandler onGestureEvent={swipeScreenGestureHandler}>
+            <Animated.View style={styles.swipeStrip}>
+              <SwipeUpTransition />
+            </Animated.View>
+          </PanGestureHandler>
+        )}
       </Animated.View>
     </Box>
   );

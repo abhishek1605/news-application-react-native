@@ -9,6 +9,8 @@ export const lightTheme: Theme = extendTheme({
       200: "#A7D5E1",
       300: "#8DC8D8",
       400: "#72BBCE",
+      textColor: "#000",
+      selectedBtnTextColor: "#fff",
     },
   },
 });
@@ -21,7 +23,9 @@ export const darkTheme: Theme = extendTheme({
       100: "#005066",
       200: "#004052",
       300: "#00303D",
-      400: "#002029",
+      backgroundColor: "#002029",
+      textColor: "#fff",
+      selectedBtnTextColor: "#fff",
     },
   },
 });
