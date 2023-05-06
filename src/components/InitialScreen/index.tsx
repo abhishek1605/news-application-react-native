@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { EasingFunction, useWindowDimensions } from "react-native";
 
 import AppContext from "../../Context/AppContext";
-import { Box, Center, Image, PresenceTransition } from "native-base";
+import { Box, Center, Image } from "native-base";
 import { PanGestureHandler } from "react-native-gesture-handler";
 import Animated, {
   useAnimatedGestureHandler,
@@ -81,7 +81,7 @@ const InitialScreen = ({ navigation }: NavigationProps) => {
         style={[{ height: setClientHeight() }, animatedContainerStyle]}
       >
         <Box {...styles.container} backgroundColor="primary.backgroundColor">
-          <Center>
+          <Center zIndex={2}>
             <Image
               size={150}
               source={
@@ -94,14 +94,14 @@ const InitialScreen = ({ navigation }: NavigationProps) => {
             <InitialScreenHeading />
             <InitialScreenButtons />
           </Center>
+          {language && (
+            <PanGestureHandler onGestureEvent={swipeScreenGestureHandler}>
+              <Animated.View style={styles.swipeStrip}>
+                <SwipeUpTransition />
+              </Animated.View>
+            </PanGestureHandler>
+          )}
         </Box>
-        {language && (
-          <PanGestureHandler onGestureEvent={swipeScreenGestureHandler}>
-            <Animated.View style={styles.swipeStrip}>
-              <SwipeUpTransition />
-            </Animated.View>
-          </PanGestureHandler>
-        )}
       </Animated.View>
     </Box>
   );

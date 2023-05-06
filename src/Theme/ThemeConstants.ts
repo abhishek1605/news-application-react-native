@@ -6,9 +6,10 @@ export const lightTheme: Theme = extendTheme({
     primary: {
       backgroundColor: "#DCEEF3",
       100: "#C2E2EA",
-      200: "#A7D5E1",
+      borderColor: "#C2E2EA",
+      secondaryBgColor: "#A7D5E1",
       300: "#8DC8D8",
-      400: "#72BBCE",
+      buttonColor: "#72BBCE",
       textColor: "#000",
       selectedBtnTextColor: "#fff",
     },
@@ -20,9 +21,9 @@ export const darkTheme: Theme = extendTheme({
   colors: {
     primary: {
       50: "#00607A",
-      100: "#005066",
-      200: "#004052",
-      300: "#00303D",
+      secondaryBgColor: "#005066",
+      borderColor: "#004052",
+      buttonColor: "#00303D",
       backgroundColor: "#002029",
       textColor: "#fff",
       selectedBtnTextColor: "#fff",

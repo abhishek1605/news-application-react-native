@@ -7,3 +7,7 @@ export type ContextProps = {
 export type NavigationProps = {
   navigation: any;
 };
+export type languageTextType = {
+  en: string;
+  ar: string;
+};

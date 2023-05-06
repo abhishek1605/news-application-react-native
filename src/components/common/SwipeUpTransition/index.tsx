@@ -6,7 +6,13 @@ import React, {
   Center,
 } from "native-base";
 import { useContext, useEffect, useMemo, useState } from "react";
+import { Platform } from "react-native";
+import { SWIPE_UP_TEXT } from "../../../constants/commonConstants";
 import AppContext from "../../../Context/AppContext";
+import {
+  getlanguageText,
+  getPresenceTransitionConfig,
+} from "../../../utils/commonUtils";
 import UpArrow from "../Icons/upArrowSvg";
 
 const SwipeUpTransition = () => {
@@ -16,15 +22,11 @@ const SwipeUpTransition = () => {
   const { textColor }: any = colors.primary;
   const [isFirstVisbile, setFirstVisble] = useState(true);
   const [isSecondVisbile, setSecondVisible] = useState(false);
+
   const swipeText: string = useMemo(() => {
-    if (language === "en") {
-      return "Swipe Up";
-    }
-    if (language === "ar") {
-      return "اسحب للاعلى";
-    }
-    return "";
+    return getlanguageText(SWIPE_UP_TEXT, language);
   }, [language]);
+
   useEffect(() => {
     if (isFirstVisbile) {
       setTimeout(() => {
@@ -39,54 +41,37 @@ const SwipeUpTransition = () => {
     }
   }, [isFirstVisbile, isSecondVisbile]);
   return (
-    <Center>
-      <VStack alignItems="center" justifyContent="space-between">
+    <Center position="relative" top="120">
+      <VStack
+        alignItems="center"
+        justifyContent="space-between"
+        position="relative"
+        top={Platform.OS === "web" ? "7" : "0"}
+      >
         <PresenceTransition
           visible={isFirstVisbile}
-          initial={{
-            opacity: 0,
-          }}
-          animate={{
-            opacity: 1,
-            transition: {
-              duration: 700,
-            },
-          }}
+          {...getPresenceTransitionConfig({ duration: 700 })}
         >
           <UpArrow
             color={textColor}
             size="30"
             height="20"
-            customStyle={{ position: "relative", bottom: "10" }}
+            customStyle={{ position: "relative", top: "100" }}
           />
         </PresenceTransition>
         <PresenceTransition
           visible={isSecondVisbile}
-          initial={{
-            opacity: 0,
-          }}
-          animate={{
-            opacity: 1,
-            transition: {
-              duration: 700,
-            },
-          }}
+          {...getPresenceTransitionConfig({ duration: 700 })}
         >
           <UpArrow
             color={textColor}
             size="30"
             height="20"
-            customStyle={{ position: "relative", bottom: "100" }}
+            customStyle={{ position: "relative", bottom: "0" }}
           />
         </PresenceTransition>
       </VStack>
-      <Text
-        position="relative"
-        bottom="120"
-        fontSize="lg"
-        fontWeight="800"
-        color={textColor}
-      >
+      <Text fontSize="lg" fontWeight="800" color={textColor}>
         {swipeText}
       </Text>
     </Center>

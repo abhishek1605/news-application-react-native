@@ -1,7 +1,13 @@
-import { PresenceTransition, Text } from "native-base";
+import { Box, HStack, PresenceTransition, Text } from "native-base";
 import React, { useEffect } from "react";
 import { NavigationProps } from "../../types/appTypes";
-import { NavigationContainer } from "@react-navigation/native";
+import {
+  getPresenceTransitionConfig,
+  setClientHeight,
+} from "../../utils/commonUtils";
+import FilterSection from "./FilterSection";
+import ListingSection from "./ListingSection";
+import TopicSection from "./TopicSection";
 
 const NewsListing = ({ navigation }: NavigationProps) => {
   useEffect(
@@ -15,19 +21,17 @@ const NewsListing = ({ navigation }: NavigationProps) => {
   return (
     <PresenceTransition
       visible
-      initial={{
-        opacity: 0,
-        scale: 0,
-      }}
-      animate={{
-        opacity: 1,
-        scale: 1,
-        transition: {
-          duration: 250,
-        },
-      }}
+      {...getPresenceTransitionConfig({ duration: 500, isAddScaling: true })}
     >
-      <Text>new listing Page</Text>
+      <Box bg="primary.backgroundColor" width="100%" height={setClientHeight()}>
+        <Box bg="primary.secondaryBgColor">
+          <HStack width="100%" flexWrap="wrap">
+            <TopicSection />
+            <FilterSection />
+          </HStack>
+        </Box>
+        <ListingSection />
+      </Box>
     </PresenceTransition>
   );
 };
