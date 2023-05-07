@@ -1,4 +1,4 @@
-import { Box, HStack, Text } from "native-base";
+import { Box, Divider, HStack, Text } from "native-base";
 import React from "react";
 import { shadowConfig } from "../../../../constants/commonConstants";
 import FilterSection from "../../FilterSection";
@@ -11,19 +11,18 @@ type listingHeaderProps = {
 const ListingHeader = ({ children }: listingHeaderProps) => {
   return (
     <Box>
-      <Box
-        p="3"
-        width="100%"
-        bg="primary.secondaryBgColor"
-        {...shadowConfig}
-        borderWidth="1"
-        borderColor="primary.borderColor"
-      >
+      <Box p="3" bg="primary.secondaryBgColor" {...shadowConfig}>
         <Text textAlign="center" color="primary.textColor" fontWeight="black">
           News Feed
         </Text>
       </Box>
-      <HStack width="100%" flexWrap="wrap" bg="primary.secondaryBgColor">
+      <HStack
+        width="100%"
+        borderTopColor="primary.borderColor"
+        borderTopWidth="2"
+        flexWrap="wrap"
+        bg="primary.secondaryBgColor"
+      >
         <TopicSection />
         <FilterSection />
       </HStack>

@@ -7,17 +7,13 @@ import {
   Text,
   Box,
   useTheme,
-  Center,
   Pressable,
   Divider,
   Tooltip,
 } from "native-base";
 import React, { useContext, useMemo } from "react";
 import { Platform } from "react-native";
-import {
-  FIND_MORE_TEXT,
-  shadowConfig,
-} from "../../../../constants/commonConstants";
+import { FIND_MORE_TEXT } from "../../../../constants/commonConstants";
 import { NAVIGATION_PAGES } from "../../../../constants/navigatorConstants";
 import AppContext from "../../../../Context/AppContext";
 import { articles } from "../../../../types/appTypes";
@@ -121,6 +117,7 @@ const NewsCard = ({ article }: newsCardProps) => {
                 borderWidth={1}
                 py="1"
                 px="2"
+                borderColor="primary.borderColor"
               >
                 {author}
               </Text>
@@ -146,7 +143,11 @@ const NewsCard = ({ article }: newsCardProps) => {
         >
           {description}
         </Text>
-
+        <Divider
+          my="1"
+          _dark={{ bg: "primary.borderColor" }}
+          _light={{ bg: "primary.borderColor" }}
+        />
         <Pressable
           onPress={() => handleCardPress(url)}
           borderWidth="1"

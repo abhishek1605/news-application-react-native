@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { IconButton, Center, Box } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
-
 import FilterModal from "./FilterModal";
 
 const FilterSection = () => {
@@ -13,7 +12,7 @@ const FilterSection = () => {
 
   return (
     <Center
-      borderLeftWidth={1}
+      borderLeftWidth={2}
       borderColor="primary.borderColor"
       flexBasis="30%"
     >

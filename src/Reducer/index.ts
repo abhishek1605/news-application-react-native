@@ -4,6 +4,7 @@ import {
   SET_ARTICLE_DATA,
   SET_FILTER_VALUES,
   SET_LANGUAGE,
+  SET_THEME,
   SET_TOPIC,
 } from "../constants/reducerConstants";
 import { actionType, initialStateTypes } from "../types/reducerTypes";
@@ -27,6 +28,13 @@ export const AppReducer = (state: initialStateTypes, action: actionType) => {
       return {
         ...state,
         language: queryParam,
+      };
+    }
+    case SET_THEME: {
+      const { theme } = action.payload;
+      return {
+        ...state,
+        theme,
       };
     }
     case SET_TOPIC: {
