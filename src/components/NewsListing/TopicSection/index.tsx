@@ -1,5 +1,6 @@
 import { Box, HStack, ScrollView, Text, Image, Pressable } from "native-base";
-import React, { useContext } from "react";
+import React, { useContext, useMemo } from "react";
+import { Platform } from "react-native";
 import { shadowConfig } from "../../../constants/commonConstants";
 import { SET_TOPIC } from "../../../constants/reducerConstants";
 import {
@@ -13,10 +14,7 @@ const TopicSection = () => {
   const { state, dispatch } = useContext(AppContext);
   const { topic, language } = state || {};
   const getSelectedTagConfig = (queryText: string): boolean => {
-    if (topic === queryText) {
-      return true;
-    }
-    return false;
+    return topic === queryText;
   };
   const handleTopicClick = (selectedTopic: string): void => {
     if (selectedTopic === topic) {
@@ -24,27 +22,36 @@ const TopicSection = () => {
     }
     dispatch({ type: SET_TOPIC, payload: { topic: selectedTopic } });
   };
-
+  const USED_TOPIC_PARAMS: topicParamType[] = useMemo(() => {
+    return TOPIC_PARAMS.sort(function (x, y) {
+      return x.queryText === topic ? -1 : y.queryText === topic ? 1 : 0;
+    });
+  }, [topic]);
   return (
     <ScrollView
       horizontal={true}
       showsHorizontalScrollIndicator={false}
+      p="2"
+      pr="10"
       flexBasis="70%"
-      pt="2"
-      pb="2"
     >
-      <HStack space={2} alignItems="center">
-        {TOPIC_PARAMS.map((query: topicParamType, index: number) => {
+      <HStack space={1} alignItems="center">
+        {USED_TOPIC_PARAMS.map((query: topicParamType, index: number) => {
           const isSelected = getSelectedTagConfig(query.queryText);
 
           return (
             <Pressable
+              mr={`${
+                USED_TOPIC_PARAMS.length - 1 === index && Platform.OS !== "web"
+                  ? "5"
+                  : "0"
+              }`}
               key={index}
               onPress={() => handleTopicClick(query.queryText)}
             >
               <HStack
                 bg={`${
-                  isSelected ? "primary.backgroundColor" : "primary.borderColor"
+                  isSelected ? "primary.backgroundColor" : "primary.buttonColor"
                 }`}
                 {...shadowConfig}
                 borderRadius={15}
@@ -54,7 +61,7 @@ const TopicSection = () => {
                 alignItems="center"
                 borderWidth={1}
                 borderColor={`${
-                  isSelected ? "primary.borderColor" : "primary.backgroundColor"
+                  isSelected ? "primary.backgroundColor" : "primary.borderColor"
                 }`}
               >
                 <Image
@@ -84,4 +91,4 @@ const TopicSection = () => {
   );
 };
 
-export default TopicSection;
+export default React.memo(TopicSection);

@@ -41,7 +41,7 @@ const SwipeUpTransition = () => {
     }
   }, [isFirstVisbile, isSecondVisbile]);
   return (
-    <Center position="relative" top="120">
+    <Center position="relative" bottom="110">
       <VStack
         alignItems="center"
         justifyContent="space-between"

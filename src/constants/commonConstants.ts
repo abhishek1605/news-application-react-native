@@ -1,4 +1,4 @@
-import { languageTextType } from "../types/appTypes";
+import { languageArrayType, languageTextType } from "../types/appTypes";
 
 type shadowConfigType = {
   shadowColor: string;
@@ -35,8 +35,51 @@ export const SAVE_TEXT: languageTextType = {
   en: "SAVE",
   ar: "يحفظ",
 };
+export const FIND_MORE_TEXT: languageTextType = {
+  en: "Find out more",
+  ar: "اكتشف المزيد",
+};
 
 export const DEFAULT_ERROR_MESSAGE: languageTextType = {
   en: "Something Went Wrong! Please Try Again Later",
   ar: "هناك خطأ ما! يرجى المحاولة مرة أخرى في وقت لاحق",
+};
+export const DEFAULT_EMPTY_MESSAGE: languageTextType = {
+  en: "No News Feed Found",
+  ar: "لم يتم العثور على موجز أخبار",
+};
+export const LANGUAGE_DAYS: languageArrayType = {
+  en: ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"],
+  ar: ["اﻷحد", "اﻷثنين", "الثلاثاء", "اﻷربعاء", "الخميس", "الجمعة", "السبت"],
+};
+
+export const LANGUAGE_MONTH: languageArrayType = {
+  en: [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "June",
+    "Jul",
+    "Aug",
+    "Sept",
+    "Oct",
+    "Nov",
+    "Dec",
+  ],
+  ar: [
+    "يناير",
+    "فبراير",
+    "مارس",
+    "إبريل",
+    "مايو",
+    "يونيو",
+    "يوليو",
+    "أغسطس",
+    "سبتمبر",
+    "أكتوبر",
+    "نوفمبر",
+    "ديسمبر",
+  ],
 };

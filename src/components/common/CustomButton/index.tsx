@@ -28,13 +28,13 @@ const CustomButton = (props: Props) => {
 
   if (isSelected) {
     styleObj.variant = "solid";
-    styleObj.bg = "primary.secondaryBgColor";
+    styleObj.bg = "primary.buttonColor";
   }
   return (
     <Button
       {...styleObj}
       {...customStyle}
-      borderColor="primary.secondaryBgColor"
+      borderColor="primary.buttonColor"
       _text={{
         color: isSelected
           ? "primary.selectedBtnTextColor"

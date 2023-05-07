@@ -2,8 +2,8 @@ import { articles } from "./appTypes";
 
 export type initialStateTypes = {
   theme: string;
-  language: string;
-  topic: string;
+  language: string | undefined;
+  topic?: string;
   sortBy: string;
   from: string;
   articles: articles[];

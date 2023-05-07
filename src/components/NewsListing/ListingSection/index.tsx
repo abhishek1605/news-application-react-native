@@ -1,4 +1,4 @@
-import { Box } from "native-base";
+import { Box, FlatList, useTheme } from "native-base";
 import React, { useContext, useEffect } from "react";
 import AppContext from "../../../Context/AppContext";
 import { initialStateTypes } from "../../../types/reducerTypes";
@@ -14,9 +14,20 @@ import {
   SET_ARTICLE_DATA,
 } from "../../../constants/reducerConstants";
 import NewsCardLoader from "../../common/NewsCardLoader";
+import {
+  DEFAULT_EMPTY_MESSAGE,
+  DEFAULT_ERROR_MESSAGE,
+} from "../../../constants/commonConstants";
+import ErrorScreen from "../../common/ErrorScreen";
+import NewsCard from "./NewsCard";
+import { articles } from "../../../types/appTypes";
+import ListingHeader from "./ListingHeader";
+import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 
 const ListingSection = () => {
   const { state, dispatch } = useContext(AppContext);
+  const { colors } = useTheme();
+  const { textColor }: any = colors.primary;
   const {
     language,
     topic,
@@ -31,7 +42,7 @@ const ListingSection = () => {
     try {
       dispatch({
         type: SET_ARTICLES_LOADING,
-        payload: { isNewsLoading: true },
+        payload: { isNewsLoading: true, articles: [] },
       });
       // commenting api call for now till the issue with paid version is resolved.
       //   const response = await fetchNewsData(
@@ -63,9 +74,50 @@ const ListingSection = () => {
     getNewsData();
   }, [language, topic, sortBy, from]);
 
+  const renderHeader = () => {
+    return (
+      <ListingHeader>
+        {isNewsLoading ? (
+          <NewsCardLoader />
+        ) : isError ? (
+          <ErrorScreen
+            errorMessage={DEFAULT_ERROR_MESSAGE}
+            language={language}
+            iconComponent={
+              <MaterialIcons name="error" size={40} color={textColor} />
+            }
+          />
+        ) : null}
+      </ListingHeader>
+    );
+  };
   return (
-    <Box pt="7" p="5">
-      {isNewLoading && <NewsCardLoader />}
+    <Box height="100%">
+      <FlatList
+        data={articles}
+        renderItem={({ item }: { item: articles }) =>
+          isError ? null : <NewsCard article={item} />
+        }
+        showsVerticalScrollIndicator={false}
+        ListHeaderComponent={renderHeader}
+        ListEmptyComponent={
+          isError || isNewsLoading ? null : (
+            <ErrorScreen
+              errorMessage={DEFAULT_EMPTY_MESSAGE}
+              language={language}
+              iconComponent={
+                <MaterialCommunityIcons
+                  name="magnify-close"
+                  size={40}
+                  color={textColor}
+                />
+              }
+            />
+          )
+        }
+        stickyHeaderIndices={[0]}
+        keyExtractor={(_, key) => `article_${key}`}
+      />
     </Box>
   );
 };

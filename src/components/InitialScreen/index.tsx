@@ -34,7 +34,7 @@ const easeInOpt: dimensionTypes = {
 };
 
 const InitialScreen = ({ navigation }: NavigationProps) => {
-  const { state, dispatch } = useContext(AppContext);
+  const { state } = useContext(AppContext);
   const { language, theme } = state || {};
   const y = useSharedValue(0);
   const [navigateScreen, setNavigateScreen] = useState<boolean>(false);
@@ -94,14 +94,14 @@ const InitialScreen = ({ navigation }: NavigationProps) => {
             <InitialScreenHeading />
             <InitialScreenButtons />
           </Center>
-          {language && (
-            <PanGestureHandler onGestureEvent={swipeScreenGestureHandler}>
-              <Animated.View style={styles.swipeStrip}>
-                <SwipeUpTransition />
-              </Animated.View>
-            </PanGestureHandler>
-          )}
         </Box>
+        {language && (
+          <PanGestureHandler onGestureEvent={swipeScreenGestureHandler}>
+            <Animated.View style={styles.swipeStrip}>
+              <SwipeUpTransition />
+            </Animated.View>
+          </PanGestureHandler>
+        )}
       </Animated.View>
     </Box>
   );

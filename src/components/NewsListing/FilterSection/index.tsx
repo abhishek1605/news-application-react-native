@@ -21,6 +21,10 @@ const FilterSection = () => {
         <IconButton
           size="md"
           variant="solid"
+          backgroundColor="primary.buttonColor"
+          color="primary.textColor"
+          borderWidth={1}
+          borderColor="primary.borderColor"
           _icon={{
             as: MaterialIcons,
             name: "menu",

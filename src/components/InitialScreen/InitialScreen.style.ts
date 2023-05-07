@@ -22,7 +22,7 @@ const styles: InitialScreenStyle = StyleSheet.create({
   swipeStrip: {
     position: "absolute",
     width: "100%",
-    height: 100,
+    height: 120,
     bottom: 0,
     left: 0,
   },

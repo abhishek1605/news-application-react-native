@@ -3,8 +3,8 @@ import React from "react";
 
 const NewsCardLoader = () => {
   return (
-    <Center w="100%">
-      {[1, 2, 3, 4, 5].map((key) => (
+    <Center w="100%" p="5">
+      {[1, 2, 3, 4].map((key) => (
         <HStack
           key={key}
           w="100%"

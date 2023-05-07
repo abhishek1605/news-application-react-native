@@ -22,3 +22,8 @@ export type articles = {
   publishedAt: string;
   content?: string;
 };
+
+export type languageArrayType = {
+  en: string[];
+  ar: string[];
+};

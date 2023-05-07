@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { NativeBaseProvider, Box, Button } from "native-base";
+import { NativeBaseProvider, Box } from "native-base";
 import AppContext from "./src/Context/AppContext";
 import { AppReducer, initialState } from "./src/Reducer";
 import { ContextProps } from "./src/types/appTypes";

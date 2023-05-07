@@ -8,7 +8,7 @@ import {
   Pressable,
   ScrollView,
 } from "native-base";
-import { getlanguageText } from "../../../../utils/commonUtils";
+import { getlanguageText, getTextAlign } from "../../../../utils/commonUtils";
 import {
   filterConfigType,
   filterOptionsType,
@@ -66,14 +66,15 @@ const FilterModal = ({ setShowModal, showModal }: PropType) => {
       }}
       size="md"
       closeOnOverlayClick={false}
+      bg="rgba(0, 0, 0, 0.6)"
     >
-      <Modal.Content maxH="400" backgroundColor="primary.secondaryBgColor">
+      <Modal.Content maxH="450" backgroundColor="primary.secondaryBgColor">
         <Modal.Header
           backgroundColor="primary.secondaryBgColor"
           borderColor="primary.borderColor"
         >
           <Text
-            textAlign={language === "ar" ? "right" : "left"}
+            textAlign={getTextAlign(language)}
             color="primary.textColor"
             fontWeight="bold"
             fontSize="lg"
@@ -88,7 +89,7 @@ const FilterModal = ({ setShowModal, showModal }: PropType) => {
             return (
               <Box key={index} mb="3">
                 <Text
-                  textAlign={language === "ar" ? "right" : "left"}
+                  textAlign={getTextAlign(language)}
                   color="primary.textColor"
                   fontWeight="bold"
                   fontSize="md"
@@ -127,14 +128,10 @@ const FilterModal = ({ setShowModal, showModal }: PropType) => {
                             p="2"
                             borderRadius="10"
                             onPress={() => handleSelectFilter(type, opt.value)}
-                            borderColor={`${
-                              isSelected
-                                ? "primary.borderColor"
-                                : "primary.backgroundColor"
-                            }`}
+                            borderColor="primary.borderColor"
                           >
                             <Text
-                              textAlign={language === "ar" ? "right" : "left"}
+                              textAlign={getTextAlign(language)}
                               color="primary.textColor"
                             >
                               {getlanguageText(opt.name, language)}
