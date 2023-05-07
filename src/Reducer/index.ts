@@ -1,4 +1,7 @@
 import {
+  SET_ARTICLES_ERROR,
+  SET_ARTICLES_LOADING,
+  SET_ARTICLE_DATA,
   SET_FILTER_VALUES,
   SET_LANGUAGE,
   SET_TOPIC,
@@ -11,7 +14,10 @@ export const initialState: initialStateTypes = {
   language: "",
   topic: "apple",
   sortBy: "publishedAt",
-  from: getPastDate(90),
+  from: getPastDate(15),
+  articles: [],
+  isNewsLoading: false,
+  isError: false,
 };
 
 export const AppReducer = (state: initialStateTypes, action: actionType) => {
@@ -30,6 +36,9 @@ export const AppReducer = (state: initialStateTypes, action: actionType) => {
         topic,
       };
     }
+    case SET_ARTICLES_ERROR:
+    case SET_ARTICLES_LOADING:
+    case SET_ARTICLE_DATA:
     case SET_FILTER_VALUES: {
       return {
         ...state,

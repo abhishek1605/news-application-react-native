@@ -1,9 +1,14 @@
+import { articles } from "./appTypes";
+
 export type initialStateTypes = {
   theme: string;
-  language: string | undefined;
+  language: string;
   topic: string;
   sortBy: string;
   from: string;
+  articles: articles[];
+  isNewsLoading: boolean;
+  isError: boolean;
 };
 export type payloadType = {
   queryParam?: string;
@@ -11,6 +16,9 @@ export type payloadType = {
   from?: string;
   language?: string;
   theme?: string;
+  articles?: articles[];
+  isNewsLoading?: boolean;
+  isError?: boolean;
 };
 
 export type actionType = {

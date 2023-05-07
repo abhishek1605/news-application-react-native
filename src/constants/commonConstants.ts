@@ -35,3 +35,8 @@ export const SAVE_TEXT: languageTextType = {
   en: "SAVE",
   ar: "يحفظ",
 };
+
+export const DEFAULT_ERROR_MESSAGE: languageTextType = {
+  en: "Something Went Wrong! Please Try Again Later",
+  ar: "هناك خطأ ما! يرجى المحاولة مرة أخرى في وقت لاحق",
+};

@@ -45,3 +45,11 @@ export const getlanguageText = (
 export const getPastDate = (days: number): string => {
   return moment().subtract(days, "days").format("YYYY-MM-DD");
 };
+
+export const convertObjIntoString = (obj: object): string => {
+  let string = "";
+  Object.keys(obj).forEach((key) => {
+    string = string + `&${key}=${obj[key as keyof object]}`;
+  });
+  return string;
+};
