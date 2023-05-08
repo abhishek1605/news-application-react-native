@@ -12,7 +12,7 @@ const FilterSection = () => {
 
   return (
     <Center
-      borderLeftWidth={2}
+      borderLeftWidth={1}
       borderColor="primary.borderColor"
       flexBasis="30%"
     >
@@ -27,6 +27,7 @@ const FilterSection = () => {
           _icon={{
             as: MaterialIcons,
             name: "menu",
+            color: "primary.textColor",
           }}
           textAlign="center"
           onPress={handleShowFilterModal}

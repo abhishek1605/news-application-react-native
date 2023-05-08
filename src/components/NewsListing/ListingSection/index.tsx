@@ -44,25 +44,22 @@ const ListingSection = () => {
         type: SET_ARTICLES_LOADING,
         payload: { isNewsLoading: true, articles: [] },
       });
-      // commenting api call for now till the issue with paid version is resolved.
-      //   const response = await fetchNewsData(
-      //     converrtObjIntoString({ language, q: topic, sortBy, from })
-      //   );
-      setTimeout(() => {
-        const response = mockJson;
-        const { status, articles = [] } = response;
-        if (status) {
-          dispatch({
-            type: SET_ARTICLE_DATA,
-            payload: { articles, isNewsLoading: false },
-          });
-        } else {
-          dispatch({
-            type: SET_ARTICLES_ERROR,
-            payload: { isError: true, isNewsLoading: false },
-          });
-        }
-      }, 5000);
+      const response = await fetchNewsData(
+        convertObjIntoString({ language, q: topic, sortBy, from })
+      );
+      const { status, articles = [] } = response;
+
+      if (status === "ok") {
+        dispatch({
+          type: SET_ARTICLE_DATA,
+          payload: { articles, isNewsLoading: false },
+        });
+      } else {
+        dispatch({
+          type: SET_ARTICLES_ERROR,
+          payload: { isError: true, isNewsLoading: false },
+        });
+      }
     } catch (e: any) {
       dispatch({
         type: SET_ARTICLES_ERROR,

@@ -44,6 +44,10 @@ export const DEFAULT_ERROR_MESSAGE: languageTextType = {
   en: "Something Went Wrong! Please Try Again Later",
   ar: "هناك خطأ ما! يرجى المحاولة مرة أخرى في وقت لاحق",
 };
+export const NEWS_FEED_TEXT: languageTextType = {
+  en: "News Feed",
+  ar: "موجز الأخبار",
+};
 export const DEFAULT_EMPTY_MESSAGE: languageTextType = {
   en: "No News Feed Found",
   ar: "لم يتم العثور على موجز أخبار",

@@ -79,20 +79,6 @@ export const FILTER_CONFIG: filterConfigType[] = [
     filterOptions: [
       {
         name: {
-          en: "Past 90 Days",
-          ar: "90 يومًا الماضية",
-        },
-        value: getPastDate(90),
-      },
-      {
-        name: {
-          en: "Past 60 Days",
-          ar: "60 يومًا الماضية",
-        },
-        value: getPastDate(60),
-      },
-      {
-        name: {
           en: "Past 30 Days",
           ar: "آخر 30 يومًا",
         },
@@ -104,6 +90,20 @@ export const FILTER_CONFIG: filterConfigType[] = [
           ar: "الخمسة عشر يومًا الماضية",
         },
         value: getPastDate(15),
+      },
+      {
+        name: {
+          en: "Past 7 Days",
+          ar: "الأيام السبعة الماضية",
+        },
+        value: getPastDate(7),
+      },
+      {
+        name: {
+          en: "Yesterday",
+          ar: "أمس",
+        },
+        value: getPastDate(1),
       },
     ],
   },

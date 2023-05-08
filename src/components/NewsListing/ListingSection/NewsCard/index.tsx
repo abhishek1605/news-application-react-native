@@ -13,7 +13,10 @@ import {
 } from "native-base";
 import React, { useContext, useMemo } from "react";
 import { Platform } from "react-native";
-import { FIND_MORE_TEXT } from "../../../../constants/commonConstants";
+import {
+  FIND_MORE_TEXT,
+  shadowConfig,
+} from "../../../../constants/commonConstants";
 import { NAVIGATION_PAGES } from "../../../../constants/navigatorConstants";
 import AppContext from "../../../../Context/AppContext";
 import { articles } from "../../../../types/appTypes";
@@ -58,24 +61,13 @@ const NewsCard = ({ article }: newsCardProps) => {
 
   return (
     <Box
-      style={{
-        shadowColor: "#000",
-        shadowOffset: {
-          width: 0,
-          height: 4,
-        },
-        shadowOpacity: 0.6,
-        shadowRadius: 4,
-        elevation: 4,
-      }}
+      style={shadowConfig}
       bg="primary.secondaryBgColor"
       mt="4"
       mx="5"
       pt="3"
       px="3"
       borderRadius="lg"
-      borderWidth={1}
-      borderColor="primary.borderColor"
     >
       <Image
         source={imageUrl ? { uri: imageUrl } : fallbackImage}
@@ -88,7 +80,6 @@ const NewsCard = ({ article }: newsCardProps) => {
         width="100%"
         resizeMode="contain"
         borderRadius="lg"
-        shadow={9}
       />
 
       <Stack space="2" pb="1">
@@ -102,6 +93,10 @@ const NewsCard = ({ article }: newsCardProps) => {
         >
           {title}
         </Text>
+        <Divider
+          _dark={{ bg: "primary.borderColor" }}
+          _light={{ bg: "primary.borderColor" }}
+        />
         <HStack alignItems="center" justifyContent="space-between">
           {author ? (
             <Tooltip label="Click here to read more" openDelay={500}>
@@ -109,14 +104,10 @@ const NewsCard = ({ article }: newsCardProps) => {
                 numberOfLines={1}
                 ellipsizeMode="tail"
                 color={textColor}
-                width="120"
+                width="140"
                 fontWeight="bold"
-                textAlign="center"
                 borderRadius="md"
-                bg="primary.buttonColor"
-                borderWidth={1}
                 py="1"
-                px="2"
                 borderColor="primary.borderColor"
               >
                 {author}
@@ -133,7 +124,10 @@ const NewsCard = ({ article }: newsCardProps) => {
             {getDateText(publishedAt, language)}
           </Text>
         </HStack>
-
+        <Divider
+          _dark={{ bg: "primary.borderColor" }}
+          _light={{ bg: "primary.borderColor" }}
+        />
         <Text
           textAlign={getTextAlign(language)}
           fontSize={16}
@@ -143,33 +137,20 @@ const NewsCard = ({ article }: newsCardProps) => {
         >
           {description}
         </Text>
-        <Divider
-          my="1"
-          _dark={{ bg: "primary.borderColor" }}
-          _light={{ bg: "primary.borderColor" }}
-        />
-        <Pressable
-          onPress={() => handleCardPress(url)}
-          borderWidth="1"
-          py="2"
-          px="4"
-          mb="2"
-          borderRadius="full"
-          borderColor="primary.borderColor"
-          backgroundColor="primary.buttonColor"
+        <Box
+          width="100%"
+          flexDirection={language === "ar" ? "row-reverse" : "row"}
         >
-          <Box
-            alignItems="center"
-            width="100%"
-            justifyContent="space-between"
-            flexDirection="row"
-          >
-            <Text fontWeight="bold" color={textColor}>
-              {getlanguageText(FIND_MORE_TEXT, language)}
-            </Text>
-            <AntDesign name="arrowright" size={16} color={textColor} />
-          </Box>
-        </Pressable>
+          <Pressable onPress={() => handleCardPress(url)} mb="2">
+            <Box alignItems="center" flexDirection="row">
+              <Text mb="0.5" fontWeight="bold" color={textColor} mr="1">
+                {getlanguageText(FIND_MORE_TEXT, language)}
+              </Text>
+
+              <AntDesign name="arrowright" size={16} color={textColor} />
+            </Box>
+          </Pressable>
+        </Box>
       </Stack>
     </Box>
   );

@@ -122,7 +122,7 @@ const FilterModal = ({ setShowModal, showModal }: PropType) => {
                             bg={`${
                               isSelected
                                 ? "primary.backgroundColor"
-                                : "primary.borderColor"
+                                : "primary.buttonColor"
                             }`}
                             borderWidth={1}
                             p="2"

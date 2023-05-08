@@ -4,14 +4,12 @@ import { extendTheme, Theme } from "native-base";
 export const lightTheme: Theme = extendTheme({
   colors: {
     primary: {
-      backgroundColor: "#DCEEF3",
-      100: "#C2E2EA",
-      borderColor: "#C2E2EA",
-      secondaryBgColor: "#A7D5E1",
-      300: "#8DC8D8",
-      buttonColor: "#72BBCE",
+      backgroundColor: "#FFFFFF",
+      borderColor: "#8899A6",
+      secondaryBgColor: "#F8F8F8",
+      buttonColor: "#E4E9F1",
       textColor: "#000",
-      selectedBtnTextColor: "#fff",
+      selectedBtnTextColor: "#000",
     },
   },
 });
@@ -20,13 +18,12 @@ export const lightTheme: Theme = extendTheme({
 export const darkTheme: Theme = extendTheme({
   colors: {
     primary: {
-      50: "#00607A",
-      secondaryBgColor: "#005066",
-      borderColor: "#004052",
-      buttonColor: "#00303D",
-      backgroundColor: "#002029",
-      textColor: "#fff",
-      selectedBtnTextColor: "#fff",
+      backgroundColor: "#000000",
+      borderColor: "#3E4453",
+      secondaryBgColor: "#27292F",
+      buttonColor: "#343F54",
+      textColor: "#FFFFFF",
+      selectedBtnTextColor: "#FFFFFF",
     },
   },
 });

@@ -10,7 +10,7 @@ type Props = {
 };
 type styleObjType = {
   variant: string;
-  bg: string;
+  bgColor: string;
 };
 const CustomButton = (props: Props) => {
   const {
@@ -23,12 +23,12 @@ const CustomButton = (props: Props) => {
 
   const styleObj: styleObjType = {
     variant: "outline",
-    bg: "primary.backgroundColor",
+    bgColor: "primary.backgroundColor",
   };
 
   if (isSelected) {
     styleObj.variant = "solid";
-    styleObj.bg = "primary.buttonColor";
+    styleObj.bgColor = "primary.buttonColor";
   }
   return (
     <Button

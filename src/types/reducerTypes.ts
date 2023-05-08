@@ -1,7 +1,7 @@
 import { articles } from "./appTypes";
 
 export type initialStateTypes = {
-  theme: string;
+  theme: string | undefined;
   language: string | undefined;
   topic?: string;
   sortBy: string;

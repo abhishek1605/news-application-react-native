@@ -1,8 +1,8 @@
 import { articles } from "../types/appTypes";
 
 type newsReponse = {
-  articles?: Promise<articles[]>;
-  status?: boolean;
+  articles?: articles[];
+  status?: string;
 };
 
 export const fetchNewsData = async (params: string): Promise<newsReponse> => {
@@ -10,12 +10,15 @@ export const fetchNewsData = async (params: string): Promise<newsReponse> => {
     const response = await fetch(
       `https://newsapi.org/v2/everything?apiKey=7b665b8fbe884b45abeb1dcc966da19d${params}`
     );
-    if (!response.ok) {
+    const data = await response.json();
+    const { status, articles } = data;
+
+    if (status === "error") {
       throw new Error("something went wrong");
     }
     const returnResponse: newsReponse = {
-      status: response.ok,
-      articles: response.json() as Promise<articles[]>,
+      status,
+      articles: articles as articles[],
     };
     return returnResponse;
   } catch (error) {

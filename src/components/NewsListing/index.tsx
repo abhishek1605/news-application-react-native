@@ -12,7 +12,7 @@ const NewsListing = ({ navigation }: NavigationProps) => {
   const { state, dispatch } = useContext(AppContext);
   const { theme } = state || {};
   const { colors } = useTheme();
-  const { textColor }: any = colors.primary;
+  const { selectedBtnTextColor }: any = colors.primary;
   const handleThemeChange = (): void => {
     dispatch({
       type: SET_THEME,
@@ -34,14 +34,22 @@ const NewsListing = ({ navigation }: NavigationProps) => {
         placement="bottom-right"
         borderWidth={1}
         borderColor="primary.borderColor"
-        bg="primary.buttonColor"
+        bgColor="primary.buttonColor"
         {...shadowConfig}
         size={16}
         icon={
           theme === "dark" ? (
-            <Ionicons name="moon" size={30} style={{ color: textColor }} />
+            <Ionicons
+              name="moon"
+              size={30}
+              style={{ color: selectedBtnTextColor }}
+            />
           ) : (
-            <Ionicons name="sunny" size={30} style={{ color: textColor }} />
+            <Ionicons
+              name="sunny"
+              size={30}
+              style={{ color: selectedBtnTextColor }}
+            />
           )
         }
         onPress={handleThemeChange}
