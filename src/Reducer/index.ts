@@ -11,7 +11,7 @@ import { actionType, initialStateTypes } from "../types/reducerTypes";
 import { getPastDate } from "../utils/commonUtils";
 
 export const initialState: initialStateTypes = {
-  theme: "dark",
+  theme: "",
   language: "",
   topic: "apple",
   sortBy: "publishedAt",

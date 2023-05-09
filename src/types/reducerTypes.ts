@@ -1,7 +1,7 @@
 import { articles } from "./appTypes";
 
 export type initialStateTypes = {
-  theme: string | undefined;
+  theme: string | undefined | null;
   language: string | undefined;
   topic?: string;
   sortBy: string;
@@ -15,7 +15,7 @@ export type payloadType = {
   topic?: string;
   from?: string;
   language?: string;
-  theme?: string;
+  theme?: string | null;
   articles?: articles[];
   isNewsLoading?: boolean;
   isError?: boolean;

@@ -14,12 +14,12 @@ type shadowConfigType = {
 export const shadowConfig: shadowConfigType = {
   shadowColor: "#000",
   shadowOffset: {
-    width: 0,
-    height: 4,
+    width: 2,
+    height: 2,
   },
   shadowOpacity: 0.6,
-  shadowRadius: 5,
-  elevation: 5,
+  shadowRadius: 2,
+  elevation: 4,
 };
 
 export const SWIPE_UP_TEXT: languageTextType = {

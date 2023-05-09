@@ -60,9 +60,7 @@ const TopicSection = () => {
                 pr="3"
                 alignItems="center"
                 borderWidth={1}
-                borderColor={`${
-                  isSelected ? "primary.backgroundColor" : "primary.borderColor"
-                }`}
+                borderColor="primary.borderColor"
               >
                 <Image
                   {...query.customStyle}

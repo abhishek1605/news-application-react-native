@@ -34,6 +34,17 @@ const CustomButton = (props: Props) => {
     <Button
       {...styleObj}
       {...customStyle}
+      style={{
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 2,
+        elevation: 4,
+      }}
+      borderWidth={1}
       borderColor="primary.buttonColor"
       _text={{
         color: isSelected

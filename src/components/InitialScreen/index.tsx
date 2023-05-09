@@ -1,5 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
-import { EasingFunction, useWindowDimensions } from "react-native";
+import React, { useContext, useEffect, useMemo, useState } from "react";
+import {
+  EasingFunction,
+  ImageSourcePropType,
+  useWindowDimensions,
+} from "react-native";
 
 import AppContext from "../../Context/AppContext";
 import { Box, Center, Image } from "native-base";
@@ -68,7 +72,11 @@ const InitialScreen = ({ navigation }: NavigationProps) => {
       ],
     };
   });
-
+  const initialScreenImg: any = useMemo(() => {
+    return theme === "light"
+      ? initialScreenLangImg
+      : initialScreenLangImgDarkMode;
+  }, [theme]);
   useEffect(() => {
     if (navigateScreen) {
       navigation.navigate(NAVIGATION_PAGES.NEWS_LISTING);
@@ -83,12 +91,9 @@ const InitialScreen = ({ navigation }: NavigationProps) => {
         <Box {...styles.container} backgroundColor="primary.backgroundColor">
           <Center zIndex={2}>
             <Image
+              zIndex={10}
               size={150}
-              source={
-                theme === "light"
-                  ? initialScreenLangImg
-                  : initialScreenLangImgDarkMode
-              }
+              source={initialScreenImg}
               alt="Alternate Text"
             />
             <InitialScreenHeading />

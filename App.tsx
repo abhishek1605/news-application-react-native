@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { NativeBaseProvider, Box } from "native-base";
 import AppContext from "./src/Context/AppContext";
@@ -8,8 +8,10 @@ import { actionType, initialStateTypes } from "./src/types/reducerTypes";
 import { darkTheme, lightTheme } from "./src/Theme/ThemeConstants";
 import NewAppContainer from "./src/components/NewAppContainer";
 import { setClientHeight } from "./src/utils/commonUtils";
+import { useColorScheme } from "react-native";
+import { SET_THEME } from "./src/constants/reducerConstants";
 
-export default function App() {
+const App = () => {
   const [state, dispatch] = useReducer<
     React.Reducer<initialStateTypes, actionType>
   >(AppReducer, initialState);
@@ -17,6 +19,13 @@ export default function App() {
     state,
     dispatch,
   };
+  const colorScheme = useColorScheme();
+  useEffect(() => {
+    dispatch({
+      type: SET_THEME,
+      payload: { theme: colorScheme ? colorScheme : "dark" },
+    });
+  }, []);
   const theme = state.theme === "light" ? lightTheme : darkTheme;
   return (
     <AppContext.Provider value={value}>
@@ -34,4 +43,5 @@ export default function App() {
       </NativeBaseProvider>
     </AppContext.Provider>
   );
-}
+};
+export default App;
