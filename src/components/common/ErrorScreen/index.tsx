@@ -11,16 +11,10 @@ type errorProps = {
 
 const ErrorScreen = ({ errorMessage, language, iconComponent }: errorProps) => {
   return (
-    <Box
-      alignItems="center"
-      marginTop="auto"
-      marginBottom="auto"
-      pt="170"
-      p="5"
-    >
+    <Box alignItems="center" marginTop="auto" marginBottom="auto" pt="70" p="5">
       <Center>
         {iconComponent}
-        <Text mt="2" fontSize="md" color="primary.textColor">
+        <Text textAlign="center" mt="2" fontSize="md" color="primary.textColor">
           {getlanguageText(errorMessage, language)}
         </Text>
       </Center>
