@@ -1,13 +1,9 @@
 import { Box, FlatList, useTheme } from "native-base";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import AppContext from "../../../Context/AppContext";
 import { initialStateTypes } from "../../../types/reducerTypes";
 import { fetchNewsData } from "../../../services/apiService";
-import {
-  convertObjIntoString,
-  getlanguageText,
-} from "../../../utils/commonUtils";
-import mockJson from "../../../../mockJson.json";
+import { convertObjIntoString } from "../../../utils/commonUtils";
 import {
   SET_ARTICLES_ERROR,
   SET_ARTICLES_LOADING,
@@ -24,10 +20,16 @@ import { articles } from "../../../types/appTypes";
 import ListingHeader from "./ListingHeader";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 
+type Scrollable = {
+  scrollToOffset: (options: { offset: number; animated: boolean }) => void;
+};
+
 const ListingSection = () => {
   const { state, dispatch } = useContext(AppContext);
   const { colors } = useTheme();
   const { textColor }: any = colors.primary;
+  const listRef = useRef<Scrollable | null>(null);
+
   const {
     language,
     topic,
@@ -69,6 +71,9 @@ const ListingSection = () => {
   };
   useEffect((): void => {
     getNewsData();
+    if (listRef.current) {
+      listRef.current.scrollToOffset({ offset: 0, animated: false });
+    }
   }, [language, topic, sortBy, from]);
 
   const renderHeader = () => {
@@ -88,13 +93,15 @@ const ListingSection = () => {
       </ListingHeader>
     );
   };
+  const renderItem = ({ item }: { item: articles }) =>
+    isError ? null : <NewsCard article={item} />;
+
   return (
     <Box height="100%">
       <FlatList
+        ref={listRef}
         data={articles}
-        renderItem={({ item }: { item: articles }) =>
-          isError ? null : <NewsCard article={item} />
-        }
+        renderItem={renderItem}
         showsVerticalScrollIndicator={false}
         ListHeaderComponent={renderHeader}
         ListEmptyComponent={
@@ -114,6 +121,11 @@ const ListingSection = () => {
         }
         stickyHeaderIndices={[0]}
         keyExtractor={(_, key) => `article_${key}`}
+        removeClippedSubviews={true} // Unmount components when outside of window
+        initialNumToRender={2} // Reduce initial render amount
+        maxToRenderPerBatch={1} // Reduce number in each render batch
+        updateCellsBatchingPeriod={100} // Increase time between renders
+        windowSize={7}
       />
     </Box>
   );

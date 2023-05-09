@@ -11,7 +11,7 @@ import {
   Divider,
   Tooltip,
 } from "native-base";
-import React, { useContext, useMemo } from "react";
+import React, { useContext, useMemo, memo } from "react";
 import { Platform } from "react-native";
 import {
   FIND_MORE_TEXT,
@@ -69,18 +69,21 @@ const NewsCard = ({ article }: newsCardProps) => {
       px="3"
       borderRadius="lg"
     >
-      <Image
-        source={imageUrl ? { uri: imageUrl } : fallbackImage}
-        fallbackSource={fallbackImage}
-        alt="My Image"
-        borderWidth={1}
+      <Box
         borderColor="primary.borderColor"
-        backgroundColor="primary.backgroundColor"
-        height="180"
-        width="100%"
-        resizeMode="contain"
         borderRadius="lg"
-      />
+        alignItems="center"
+      >
+        <Image
+          source={imageUrl ? { uri: imageUrl } : fallbackImage}
+          fallbackSource={fallbackImage}
+          alt="My Image"
+          backgroundColor="primary.backgroundColor"
+          height="180"
+          width="100%"
+          resizeMode="contain"
+        />
+      </Box>
 
       <Stack space="2" pb="1">
         <Text
@@ -156,4 +159,4 @@ const NewsCard = ({ article }: newsCardProps) => {
   );
 };
 
-export default React.memo(NewsCard);
+export default memo(NewsCard);
