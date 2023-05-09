@@ -1,9 +1,5 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
-import {
-  EasingFunction,
-  ImageSourcePropType,
-  useWindowDimensions,
-} from "react-native";
+import { EasingFunction, useWindowDimensions } from "react-native";
 
 import AppContext from "../../Context/AppContext";
 import { Box, Center, Image } from "native-base";
@@ -54,7 +50,7 @@ const InitialScreen = ({ navigation }: NavigationProps) => {
       y.value = event.translationY;
     },
     onEnd: (event) => {
-      if (y.value < -height / 2 || event.velocityY < -600) {
+      if (y.value < -height / 3 || event.velocityY < -500) {
         y.value = withTiming(-height, easeInOpt);
         runOnJS(handleNavigate)(true);
       } else {

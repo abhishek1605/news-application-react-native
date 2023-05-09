@@ -1,12 +1,24 @@
 import moment from "moment";
 import { ResponsiveValue } from "native-base/lib/typescript/components/types";
-import { Platform } from "react-native";
+import { Dimensions, Platform } from "react-native";
 import { LANGUAGE_DAYS, LANGUAGE_MONTH } from "../constants/commonConstants";
 import { languageTextType } from "../types/appTypes";
 import { configParamType, transitionConfigType } from "../types/utilsTypes";
 
-export const setClientHeight = (height: number = 100): string => {
-  return Platform.OS === "web" ? `${height}vh` : `${height}%`;
+const windowDimensions = Dimensions.get("window");
+
+type dimensionProps = {
+  height: number;
+};
+
+export const setClientHeight = (): string => {
+  if (Platform.OS === "web") {
+    if (windowDimensions.height) {
+      return `${windowDimensions.height}px`;
+    }
+    return "100vh";
+  }
+  return "100%";
 };
 
 export const getPresenceTransitionConfig = ({
