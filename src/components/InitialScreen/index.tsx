@@ -33,7 +33,7 @@ type dimensionTypes = {
   easing: EasingFunction;
 };
 const easeInOpt: dimensionTypes = {
-  duration: 100,
+  duration: 200,
   easing: Easing.linear,
 };
 
@@ -54,7 +54,7 @@ const InitialScreen = ({ navigation }: NavigationProps) => {
       y.value = event.translationY;
     },
     onEnd: (event) => {
-      if (y.value < -height / 2 || event.velocityY < -500) {
+      if (y.value < -height / 2 || event.velocityY < -600) {
         y.value = withTiming(-height, easeInOpt);
         runOnJS(handleNavigate)(true);
       } else {
@@ -91,6 +91,7 @@ const InitialScreen = ({ navigation }: NavigationProps) => {
         <Box {...styles.container} backgroundColor="primary.backgroundColor">
           <Center zIndex={2}>
             <Image
+              key={theme}
               zIndex={10}
               size={150}
               source={initialScreenImg}

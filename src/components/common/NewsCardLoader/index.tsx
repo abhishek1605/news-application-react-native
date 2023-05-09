@@ -1,4 +1,4 @@
-import { Center, Divider, HStack, Skeleton, Text, VStack } from "native-base";
+import { Center, Divider, HStack, Skeleton, VStack } from "native-base";
 import React from "react";
 
 const NewsCardLoader = () => {
@@ -18,7 +18,6 @@ const NewsCardLoader = () => {
           <Skeleton
             flex="1"
             height="200"
-            rounded="lg"
             startColor="primary.secondaryBgColor"
             mb="2"
           />

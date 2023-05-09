@@ -87,3 +87,10 @@ export const LANGUAGE_MONTH: languageArrayType = {
     "ديسمبر",
   ],
 };
+
+export const NEWS_API_KEYS: string[] = [
+  "fdb07f4a97b54701928970d75a30fbda",
+  "7b665b8fbe884b45abeb1dcc966da19d",
+  "986df724f7164bfc8da2be5df3b622b2",
+  "0aaafe1a0fad4b9b833a427ca9adb66a",
+];

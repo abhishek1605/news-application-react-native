@@ -1,3 +1,4 @@
+import { NEWS_API_KEYS } from "../constants/commonConstants";
 import { articles } from "../types/appTypes";
 
 type newsReponse = {
@@ -8,7 +9,9 @@ type newsReponse = {
 export const fetchNewsData = async (params: string): Promise<newsReponse> => {
   try {
     const response = await fetch(
-      `https://newsapi.org/v2/everything?apiKey=7b665b8fbe884b45abeb1dcc966da19d${params}`
+      `https://newsapi.org/v2/everything?apiKey=${
+        NEWS_API_KEYS[Math.floor(Math.random() * 4)]
+      }${params}`
     );
     const data = await response.json();
     const { status, articles } = data;
