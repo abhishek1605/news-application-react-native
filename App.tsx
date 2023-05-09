@@ -28,9 +28,9 @@ const App = () => {
   }, []);
   const theme = state.theme === "light" ? lightTheme : darkTheme;
   return (
-    <AppContext.Provider value={value}>
-      <NativeBaseProvider theme={theme}>
-        <GestureHandlerRootView>
+    <NativeBaseProvider theme={theme}>
+      <GestureHandlerRootView>
+        <AppContext.Provider value={value}>
           <Box
             width="100%"
             height={setClientHeight()}
@@ -39,9 +39,9 @@ const App = () => {
           >
             <NewAppContainer />
           </Box>
-        </GestureHandlerRootView>
-      </NativeBaseProvider>
-    </AppContext.Provider>
+        </AppContext.Provider>
+      </GestureHandlerRootView>
+    </NativeBaseProvider>
   );
 };
 export default App;

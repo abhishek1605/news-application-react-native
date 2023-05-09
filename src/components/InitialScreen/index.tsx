@@ -33,7 +33,7 @@ type dimensionTypes = {
   easing: EasingFunction;
 };
 const easeInOpt: dimensionTypes = {
-  duration: 200,
+  duration: 0,
   easing: Easing.linear,
 };
 
