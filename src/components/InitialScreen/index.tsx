@@ -50,7 +50,7 @@ const InitialScreen = ({ navigation }: NavigationProps) => {
       y.value = event.translationY;
     },
     onEnd: (event) => {
-      if (y.value < -height / 3 || event.velocityY < -500) {
+      if (y.value < -height / 5 || event.velocityY < -400) {
         y.value = withTiming(-height, easeInOpt);
         runOnJS(handleNavigate)(true);
       } else {
