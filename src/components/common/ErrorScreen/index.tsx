@@ -15,7 +15,7 @@ const ErrorScreen = ({ errorMessage, language, iconComponent }: errorProps) => {
       alignItems="center"
       marginTop="auto"
       marginBottom="auto"
-      pt="300"
+      pt="170"
       p="5"
     >
       <Center>
