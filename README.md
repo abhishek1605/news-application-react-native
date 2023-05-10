@@ -154,6 +154,10 @@ You can view the light theme palette in more detail [here](https://coolors.co/ff
 
 You can view the dark theme palette in more detail [here](https://coolors.co/ffffff-3e4453-343f54-27292f-000000).
 
+## Live Demo
 
+You can view a live demo of our application hosted on GitHub pages [here](https://your-username.github.io/your-repo-name/).
+
+Note: Requests from the browser are not allowed on the Developer plan, except from localhost. therefore you will see something went wrong screen.
 
 
