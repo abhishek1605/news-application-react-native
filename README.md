@@ -19,8 +19,8 @@ This is a mobile application built using React Native that fetches news from a n
 * Display top news articles from various sources
 * View news in both Arabic and English
 * Light and Dark theme functionality
-* optimized News Listing with efficient scrolling. 
-* Fetching news for multiple Topics. 
+* optimized News Listing with efficient scrolling.
+* Fetching news for multiple Topics.
 * Filter functionality for language, and from date.
 * sorting functionality based on published at, popularity and relevancy
 * View Full news in a webView
@@ -28,4 +28,3 @@ This is a mobile application built using React Native that fetches news from a n
 ## Setup
 
 1. Clone this repository:
-
