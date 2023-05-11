@@ -4,17 +4,30 @@ This is a mobile application built using React Native that fetches news from a n
 
 ## Features
 
-* Display top news articles from various sources
-* View news in both Arabic and English
-* Light and Dark theme functionality
-* optimized News Listing with efficient scrolling. 
-* Fetching news for multiple Topics. 
-* Filter functionality for language, and from date.
-* sorting functionality based on published at, popularity and relevancy
-* View Full news in a webView
+* Presenting curated top news articles from a wide range of sources.
+* Offering multilingual news viewing options in both Arabic and English languages.
+* Providing users with the flexibility to switch between light and dark themes as per their preference.
+* Delivering an optimized news listing interface with smooth and efficient scrolling functionality.
+* Fetching relevant news content based on user-selected topics like Apple, Meta, and more.
+* Offering filter functionality that allows users to refine their news search by language and date range selection.
+* Enabling users to sort news articles based on their published date, popularity, and relevancy to their search criteria.
+* Providing a Full news view experience within the application through an integrated webView.
 
-## Application Screenshot - Dark Mode (Englisht)
 
+## Key Performance Points: 
+
+* Used `PanGestureHandler` from `react-native-gesture-handler` to implement swipe-up transition on initial language selection screen which provides a smooth and responsive transition animation.
+* The code is using `useWindowDimensions` from `react-native` to get the height of the screen which improves performance by setting the view based on screen height.
+* Utilize the ref attribute to enhance navigation and interaction with the FlatList component.
+* Improve performance by utilizing the keyExtractor attribute to specify a unique identifier for each item in the list.
+* Enhance performance by using the `removeClippedSubviews` attribute to unmount components when they are not visible on the screen.
+* Improve performance and reduce the initial render time by specifying a lower value for `initialNumToRender` attribute.
+* Optimize rendering efficiency by specifying a lower value for `maxToRenderPerBatch` attribute.
+* Further optimize rendering performance by increasing the value of the `updateCellsBatchingPeriod` attribute.
+* Improve performance by setting the `windowSize` attribute to specify how many items should be rendered outside of the visible area.
+* Wrapping the newsCard component inside `React.memo` to improve performance by avoiding unnecessary re-renders of the component.
+
+## Application Screenshot - Dark Mode (English)
 
 <div style={{display: "flex"}>
   <img src="/screenshots/language-select-screen-dark.png" alt="Screenshot" width="200" height="400">
@@ -127,6 +140,7 @@ You can download Expo Go app from the following app stores:
 * [App Store](https://apps.apple.com/us/app/expo-go/id982107779)
 * [Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent)
 
+
 ## Color Palette
 
 the following color palettes is used in this application:
@@ -156,8 +170,7 @@ You can view the dark theme palette in more detail [here](https://coolors.co/fff
 
 ## Live Demo
 
-You can view a live demo of our application hosted on GitHub pages [here](https://your-username.github.io/your-repo-name/).
+You can view a live demo of our application hosted on GitHub pages [here](https://abhishek1605.github.io/news-application-react-native/).
 
-Note: Requests from the browser are not allowed on the Developer plan, except from localhost. therefore you will see something went wrong screen.
-
+Note: Requests from the browser are not allowed on the Developer plan, except from localhost. therefore run the application through your local machine in order to experience the whole application.
 
