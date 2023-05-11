@@ -11,10 +11,10 @@ This is a mobile application built using React Native that fetches news from a n
 * Fetching relevant news content based on user-selected topics like Apple, Meta, and more.
 * Offering filter functionality that allows users to refine their news search by language and date range selection.
 * Enabling users to sort news articles based on their published date, popularity, and relevancy to their search criteria.
-* Providing a Full news view experience within the application through an integrated webView.
+* Providing a full news view experience within the application through an integrated webView.
 
 
-## Key Performance Points: 
+## Key Performance Points
 
 * Used `PanGestureHandler` from `react-native-gesture-handler` to implement swipe-up transition on initial language selection screen which provides a smooth and responsive transition animation.
 * The code is using `useWindowDimensions` from `react-native` to get the height of the screen which improves performance by setting the view based on screen height.
@@ -26,24 +26,6 @@ This is a mobile application built using React Native that fetches news from a n
 * Further optimize rendering performance by increasing the value of the `updateCellsBatchingPeriod` attribute.
 * Improve performance by setting the `windowSize` attribute to specify how many items should be rendered outside of the visible area.
 * Wrapping the newsCard component inside `React.memo` to improve performance by avoiding unnecessary re-renders of the component.
-
-## Application Screenshot - Dark Mode (English)
-
-<div style={{display: "flex"}>
-  <img src="/screenshots/language-select-screen-dark.png" alt="Screenshot" width="200" height="400">
-  <img src="/screenshots/news-feed-dark.png" alt="Screenshot" width="200" height="400">
-  <img src="/screenshots/filter-screen-dark.png" alt="Screenshot" width="200" height="400">
-</div>
-
-## Application Screenshot - Light Mode (Arabic)
-
-<div style={{display: "flex"}>
-  <img src="/screenshots/language-select-screen-light.png" alt="Screenshot" width="200" height="400">
-  <img src="/screenshots/news-feed-light.png" alt="Screenshot" width="200" height="400">
-  <img src="/screenshots/filter-screen-light.png" alt="Screenshot" width="200" height="400">
-</div>
-
-
 
 ## Setup
 
@@ -140,7 +122,6 @@ You can download Expo Go app from the following app stores:
 * [App Store](https://apps.apple.com/us/app/expo-go/id982107779)
 * [Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent)
 
-
 ## Color Palette
 
 the following color palettes is used in this application:
@@ -167,6 +148,22 @@ You can view the light theme palette in more detail [here](https://coolors.co/ff
 - selectedBtnTextColor: #FFFFFF
 
 You can view the dark theme palette in more detail [here](https://coolors.co/ffffff-3e4453-343f54-27292f-000000).
+
+## Application Screenshot - Dark Mode (English)
+
+<div style={{display: "flex"}>
+  <img src="/screenshots/language-select-screen-dark.png" alt="Screenshot" width="200" height="400">
+  <img src="/screenshots/news-feed-dark.png" alt="Screenshot" width="200" height="400">
+  <img src="/screenshots/filter-screen-dark.png" alt="Screenshot" width="200" height="400">
+</div>
+
+## Application Screenshot - Light Mode (Arabic)
+
+<div style={{display: "flex"}>
+  <img src="/screenshots/language-select-screen-light.png" alt="Screenshot" width="200" height="400">
+  <img src="/screenshots/news-feed-light.png" alt="Screenshot" width="200" height="400">
+  <img src="/screenshots/filter-screen-light.png" alt="Screenshot" width="200" height="400">
+</div>
 
 ## Live Demo
 
