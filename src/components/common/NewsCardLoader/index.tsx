@@ -14,6 +14,7 @@ const NewsCardLoader = () => {
           borderColor="primary.borderColor"
           mb="4"
           p="3"
+          height="400"
         >
           <Skeleton
             flex="1"
@@ -21,7 +22,7 @@ const NewsCardLoader = () => {
             startColor="primary.secondaryBgColor"
             mb="2"
           />
-          <VStack flex="2" space="2">
+          <VStack flex="1" space="2">
             <Skeleton h="6" rounded="full" startColor="primary.buttonColor" />
             <Divider
               _dark={{ bg: "primary.borderColor" }}
@@ -47,7 +48,7 @@ const NewsCardLoader = () => {
             />
             <Skeleton.Text startColor="primary.secondaryBgColor" lines={4} />
             <Skeleton
-              h="3"
+              h="2"
               w="110"
               flex="1"
               rounded="full"
